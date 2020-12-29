@@ -21,6 +21,12 @@ class User extends Model {
     })
   }
 
+  static get hidden(){
+
+    return ['password']
+
+  }
+
   static get traits(){
     return [
       '@provider:Adonis/Acl/HasRole',
@@ -42,6 +48,20 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+
+
+  image(){
+
+    return this.belongsTo('App/Models/Image')
+
+  }
+
+  coupons(){
+
+    return this.belongsMany('App/Models/Coupon')
+
+  }
+
 }
 
 module.exports = User
